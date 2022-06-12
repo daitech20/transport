@@ -12,6 +12,13 @@ class Customer(models.Model):
     def __str__(self):
         return self.user.username
 
+    @property
+    def user__username(self):
+        return self.user.username
+
+    def __unicode__(self):
+        return self.user.username
+
 class Address(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     street1 = models.CharField(max_length=256)

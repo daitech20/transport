@@ -2,12 +2,14 @@ from django.shortcuts import render
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework import generics, status
 from django.contrib.auth.models import User
-from .serializer import CustomJWTSerializer, RegisterSerializer, OrderSerializer
+from .serializer import CustomJWTSerializer, RegisterSerializer, OrderSerializer, UserSerializer, CustomerSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.exceptions import APIException
 from .permissions import IsOwnerOrReadOnly
 from rest_framework import permissions
+from django.shortcuts import get_object_or_404
+
 
 
 from .models import Customer, Order
@@ -60,3 +62,19 @@ class ValidateEmail(APIView):
                 return Response(data, status=status.HTTP_200_OK)
         data = {"error": "error"}
         return Response(data, status=status.HTTP_400_BAD_REQUEST)
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    permission_classes = [permissions.IsAuthenticated, ]
+    serializer_class = UserSerializer
+    lookup_field = 'username'
+
+class CustomerDetail(generics.RetrieveAPIView):
+    queryset = Customer.objects.all().select_related('user')
+    permission_classes = [permissions.IsAuthenticated, IsOwnerOrReadOnly]
+    serializer_class = CustomerSerializer
+    lookup_field = 'username'
+
+    def get_object(self):
+        """Return the object for this view."""
+        return get_object_or_404(self.queryset, user__username=self.kwargs["username"])

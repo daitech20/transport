@@ -45,9 +45,9 @@ class RegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         if User.objects.filter(username=validated_data["username"]).exists():
-            raise serializers.ValidationError({"error": "username exits"})
+            raise serializers.ValidationError({"username": "username exits"})
         if User.objects.filter(email=validated_data["email"]).exists():
-            raise serializers.ValidationError({"error": "email exists"})
+            raise serializers.ValidationError({"email": "email exists"})
         user = User.objects.create(
             username=validated_data['username'],
             email=validated_data['email'],
@@ -111,3 +111,17 @@ class CustomJWTSerializer(MyTokenObtainPairSerializer):
             credentials['username'] = user_obj.username
 
         return super().validate(credentials)
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['id', 'is_superuser', 'username', 'first_name', 'last_name', 'email']
+        lookup_field = 'username'
+
+class CustomerSerializer(serializers.ModelSerializer):
+    user = serializers.StringRelatedField(read_only=True)
+
+    class Meta:
+        model = Customer
+        lookup_field = "username"
+        fields = '__all__'
