@@ -1,0 +1,92 @@
+<div class="container">
+    <form @submit.prevent="createShipment()">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <h3 class="text-center">From</h3>
+            </div>
+            <div class="col-md-5">
+                <h3 class="text-center">To</h3>
+            </div>
+        </div>
+      <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-10">
+                <input v-model="address.from_street1" type="text" id="form1Example13" class="form-control form-control-lg" :class="{'is-invalid': errors.username || errors.detail }"
+                placeholder="Street" name="from_street1" />
+            </div>
+            <div class="col-md-2">
+              <input v-model="address.from_zip" type="text" id="form1Example13" class="form-control form-control-lg" :class="{'is-invalid': errors.from_error }"
+                placeholder="Zip" name="from_zip" />
+                <div v-if="errors.from_error" class="invalid-feedback">Sai zip</div>
+            </div>
+            <div class="col-lg-4 col-md-10">
+                <input v-model="address.to_street1" type="text" id="form1Example13" class="form-control form-control-lg" :class="{'is-invalid': errors.username || errors.detail }"
+                placeholder="Street" name="to_street1" />
+            </div>
+            <div class="col-md-2">
+              <input v-model="address.to_zip" type="text" id="form1Example13" class="form-control form-control-lg" :class="{'is-invalid': errors.to_error }"
+                placeholder="Zip" name="to_zip" />
+              <div v-if="errors.to_error" class="invalid-feedback">Sai zip</div>
+
+            </div>
+      </div>
+
+      <div class="row justify-content-center">
+          <label class="col-sm-0 col-form-label">Length: </label>
+          <div class="col-md-2">
+              <input v-model="parcel.length" type="number" step="0.1" id="form1Example13" class="form-control form-control-lg" :class="{'is-invalid': errors.username || errors.detail }"
+                placeholder="" name="length" />
+          </div>
+      </div>
+        <div class="row justify-content-center">
+            <label class="col-sm-0 col-form-label">Width: </label>
+          <div class="col-md-2">
+              <input v-model="parcel.width" type="number" step="0.1" id="form1Example13" class="form-control form-control-lg" :class="{'is-invalid': errors.username || errors.detail }"
+                placeholder="" name="width" />
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <label class="col-sm-0 col-form-label">Height: </label>
+          <div class="col-md-2">
+            <input v-model="parcel.height" type="number" step="0.1" id="form1Example13" class="form-control form-control-lg" :class="{'is-invalid': errors.username || errors.detail }"
+                placeholder="" name="height" />
+          </div>
+        </div>
+        <div class="row justify-content-center">
+            <label class="col-sm-0 col-form-label">Weight: </label>
+          <div class="col-md-2">
+             <input v-model="parcel.weight" type="number" step="0.1" id="form1Example13" class="form-control form-control-lg" :class="{'is-invalid': errors.username || errors.detail }"
+                placeholder="" name="weight" />
+          </div>
+      </div>
+
+      <div class="row justify-content-center mt-3">
+          <button type="submit" class="btn btn-success" >Submit</button>
+      </div>
+      </form>
+      <table v-if="priceShipment.servicecarrier != null" class="table table-hover">
+          <thead>
+              <tr>
+                <th scope="col">Carrier</th>
+                <th scope="col">Service</th>
+                <th scope="col">Price</th>
+                  <th scope="col">Action</th>
+              </tr>
+          </thead>
+          <tbody>
+            <tr v-for="sv in priceShipment.servicecarrier" :key="sv.id">
+              <td>{{ sv.carrier }}</td>
+              <td>{{ sv.service }}</td>
+              <td>{{ sv.rate }}</td>
+              <td>
+                <router-link :to="{ name: 'Checkout', params: { id: sv.id }}" replace>
+                  <button class="btn btn-success" >Select</button>
+                </router-link>           
+              </td>
+            </tr>
+          </tbody>
+      </table>
+
+      <input type="file" ref="file" @change="selectFile" accept=".xlsx, .xls, .csv" />
+      <div>{{ this.content }}</div>
+
+</div>

@@ -1,0 +1,270 @@
+.containers{
+    margin: 0 auto;
+    padding: 0 50px;
+    position: relative;
+}
+/* CSS DESCRIPTION */
+
+.content{
+    background-image:linear-gradient(to right,#8059e8, #47288d) ;
+    padding: 60px 0;
+}
+
+.description-form{
+    padding-bottom: 50px;
+}
+
+.des__container{
+    display: flex;
+    justify-content: space-between;
+}
+
+.zip-to{
+    flex: 30%;
+    margin-right: 30px;
+}
+
+.zip-from{
+    flex: 30%;
+    margin-right: 30px;
+}
+
+
+.des__body{
+    background-color: #efefef;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.des__body h1{
+    text-align: center;
+    font-size: 1.4em;
+}
+
+
+.form-group{
+    font-size: 1em;
+    line-height: 1.4em;
+    margin-bottom: 20px;
+}
+
+.form-control{
+    width: 100%;
+    font-size: 1.2em;
+    border-radius: 4px;
+    outline-color: #00bd64;
+
+    padding: 10px ;
+}
+
+.submit{
+    font-size: 1.4em;
+    padding-top: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.btn__submit{
+    width: 50%;
+    background-color: #00bd64;
+    padding: 15px 0;
+    border-radius: 10px;
+    border: none;
+    color: #fff;
+}
+
+.services{
+    flex: 30%;
+
+    background-color: #efefef !important;
+    border-radius: 10px !important;
+}
+
+.services__des{
+    font-size: 1em;
+}
+
+.services__des h3{
+    font-size: 1.4em;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.des__body .amount{
+    font-size: 1em;
+}
+
+.des__product{
+    font-size: 1em;
+}
+.product{
+    padding: 5px 0;
+}
+
+.col-sm-10{
+    display: flex;
+}
+
+.mg-10{
+    margin-right: 10px;
+}
+
+.des-icon{
+    font-size: 1.8em;
+    display: flex !important;
+    align-items: center;
+    padding-right: 5px !important;
+}
+
+.des-icon-pd-10{
+    padding-right: 10px !important;
+}
+
+.description-form{
+    padding-top: 50px;
+}
+
+.services__des h3{
+    padding: 5px 0 5px 0;
+}
+/* END CSS DESCRIPTION */
+
+
+/* CSS RESPONSIVE */
+
+@media(max-width: 480px){
+    .services__des{
+        font-size: 1.2em;
+    }
+
+    .containers {
+        margin: 0 auto;
+        padding: 0 30px !important;
+        position: relative;
+    }
+
+    .amount{
+        font-size: 1.2em;
+    }
+
+    .form-group{
+        font-size: 1em;
+    }
+
+    .zip-to,
+    .zip-from,
+    .services{
+        margin-right: 0 !important;
+    }
+}
+
+
+@media (min-width: 480px) and (max-width: 600px){
+    .services__des{
+        font-size: 1.2em;
+    }
+
+    .amount{
+        font-size: 1.2em;
+    }
+
+    .zip-to,
+    .zip-from,
+    .services{
+        margin-right: 0 !important;
+    }
+}
+
+
+ @media (max-width: 800px) {
+    .des__container{
+        display: block;
+   
+    }
+
+    .des__header{
+        display: none;
+    }
+
+    .description-form{
+        padding-top: 20px;
+    }
+
+    .des__body h1{
+        font-size: 1.4em;
+        text-align: center;
+    }
+
+    .zip-from{
+        margin-top: 30px;
+    }
+
+
+    .services{
+        margin-right: 30px;
+        margin-top: 30px;
+    }
+
+    .services__des h2{
+        font-size: 1.4em;
+        text-align: center;
+    }
+
+    .submit{
+        margin-top: 10px;
+    }
+
+    .des__product{
+        font-size: 1.2em;
+    }
+
+    .amount{
+        padding-bottom: 0px;
+    }
+ }
+
+ @media(min-width: 800px) and (max-width: 1024px) {
+    .des__container{
+        display: block;
+    }
+
+    .zip-from{
+        margin-top: 30px;
+    }
+
+    .services{
+        margin-right: 30px;
+        margin-top: 30px;
+
+    }
+}
+
+
+ @media(min-width: 1025px) and (max-width: 1170px ){
+    .services__des {
+        font-size: 1.2em;
+    }
+
+    .amount{
+        font-size: 1.2em;
+    }
+
+    .des__product {
+        font-size: 1.2em;
+    }
+
+    .submit {
+        padding-top: 5px;
+    }
+}
+
+@media(min-width: 1170px){
+    
+    .pd_0{
+        padding-bottom: 0;
+    }
+
+}
+
+
+/* END CSS RESPONSIVE */

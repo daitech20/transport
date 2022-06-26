@@ -95,11 +95,12 @@
         },
         methods: {
             register: function() {
+                window.localStorage.clear()
                 BaseRequest.post('register/', this.user)
                 .then(response => {
                     console.log(response.data);
                     window.localStorage.setItem('user', response.data.username)
-                    this.$router.push({name: 'ValidateCustomer'})
+                    this.$router.push({name: 'Login'})
                 })
                 .catch(error=> {
                     this.errors = error.response.data
@@ -130,6 +131,9 @@
 </script>
 
 <style scoped>
+    section {
+        font-size: 100%;
+    }
     .card-registration .select-input.form-control[readonly]:not([disabled]) {
         font-size: 1rem;
         line-height: 2.15;

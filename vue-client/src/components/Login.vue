@@ -36,7 +36,9 @@
                 <!-- Submit button -->
                 <button type="submit" class="btn btn-primary btn-lg btn-block">Sign in</button>
                 <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account?
-                    <a href="#!" class="link-danger">Register</a>
+                    <router-link :to="{name: 'Register'}" >
+                        <a class="link-danger">Register</a>
+                    </router-link>
                 </p>
                 </form>
             </div>
@@ -79,6 +81,7 @@
                     console.log(response.data);
                     window.localStorage.setItem('token', response.data.access)
                     window.localStorage.setItem('user', response.data.user)
+                    window.localStorage.setItem('id', response.data.id)
                     this.$router.push({name: 'Home'})
                 })
                 .catch(error=> {
